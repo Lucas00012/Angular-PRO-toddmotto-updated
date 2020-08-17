@@ -1,0 +1,9 @@
+<div>
+    <h3>Type</h3>
+    <div class="content">
+        <div class="squad"
+        *ngFor="let option of options"
+        (click)="setSelected(option)"
+        [class.active]="option==value">{{option}}</div>
+    </div>
+</div>

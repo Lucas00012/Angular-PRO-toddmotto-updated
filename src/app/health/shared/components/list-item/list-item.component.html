@@ -1,0 +1,26 @@
+<div class="item">
+    <a [routerLink]="getRoute(element)" class="subItem">
+        <div>
+            <p>{{element.name}}</p>
+            <span
+            class="specs"
+            *ngIf="element.ingredients;else workout">{{element.ingredients | join}}</span>
+            <ng-template #workout>
+                <span class="specs">
+                    {{element | workout}}
+                </span>
+            </ng-template>
+        </div>
+    </a>
+    <div *ngIf="toggle; else showBtn">
+        Delete Item?
+        <button mat-raised-button color="primary" (click)="onRemove()">Yes</button>
+        <button mat-button (click)="onToggle()">No</button>
+    </div>
+    <ng-template #showBtn>
+        <button (click)="onToggle()" mat-raised-button color="warn">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </ng-template>
+
+</div>

@@ -1,0 +1,12 @@
+.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu>h3{
+    margin: 0;
+}
+button{
+    background-color: gray;
+    color: white;
+}

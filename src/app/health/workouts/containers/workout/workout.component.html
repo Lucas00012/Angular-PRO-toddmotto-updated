@@ -1,0 +1,21 @@
+<mat-card>
+    <div class="menu">
+        <div class="left">
+            <mat-icon color="primary">fitness_center</mat-icon>
+            <mat-card-title *ngIf="workout$ | async as workout; else loading">
+                {{workout.name?'Edit':'Create'}} workout
+            </mat-card-title>
+            <ng-template #loading>
+                Loading...
+            </ng-template>
+        </div>
+        
+    </div>
+    <div>
+        <workout-form
+        (submitted)="addWorkout($event)"
+        (update)="updateWorkout($event)"
+        (remove)="removeWorkout()"
+        [workout]="workout$ | async"></workout-form>
+    </div>
+</mat-card>

@@ -1,0 +1,32 @@
+<div>
+    <div class="title">
+        {{name}}
+    </div>
+    <div>
+        <div *ngIf="section.meals; else addMeal"
+        class="container"
+        (click)="onSelect('meals',section.meals)">
+            <span>{{section.meals | join}}</span>
+        </div>
+        <ng-template #addMeal>
+            <div
+            (click)="onSelect('meals')"
+            class="container">
+                Assign Meal
+            </div>
+        </ng-template>
+
+        <div *ngIf="section.workouts; else addWorkout"
+        (click)="onSelect('workouts',section.workouts)"
+        class="container">
+            <span>{{section.workouts | join}}</span>
+        </div>
+        <ng-template #addWorkout>
+            <div
+            (click)="onSelect('workouts')"
+            class="container">
+                Assign Workout
+            </div>
+        </ng-template>
+    </div>
+</div>

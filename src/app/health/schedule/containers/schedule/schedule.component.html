@@ -1,0 +1,18 @@
+<mat-card>
+    <schedule-calendar
+    [date]="date$ | async"
+    [items]="schedule$ | async"
+    (change)="onChange($event)"
+    (select)="changeSection($event)">
+    </schedule-calendar>
+
+    <div *ngIf="list$ | async as list">
+        <schedule-assign
+        *ngIf="open"
+        [section]="selected$ | async"
+        [list]="list"
+        (close)="onCloseModal()"
+        (update)="onUpdate($event)">
+        </schedule-assign>
+    </div>
+</mat-card>

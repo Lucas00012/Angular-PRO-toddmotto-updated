@@ -1,0 +1,31 @@
+
+<mat-card>
+    <div class="menu">
+        <div class="left">
+            <mat-icon color="warn">favorite_border</mat-icon>
+            <mat-card-title>Your meals</mat-card-title>
+        </div>
+        <div>
+            <button mat-raised-button>
+                <a routerLink="/meals/new">
+                    NEW MEAL
+                </a>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="meals$ | async as meals; else loading;">
+        <div *ngIf="!meals.length">
+            No meals added, add a meal to start
+        </div>
+        <list-item
+        *ngFor="let meal of meals"
+        [element]="meal"
+        (remove)="removeMeal($event)"></list-item>
+    </div>
+    <ng-template #loading>
+        <div class="loading">
+            <mat-icon>hourglass_empty</mat-icon>
+            Fething Meals...
+        </div>
+    </ng-template>
+</mat-card>

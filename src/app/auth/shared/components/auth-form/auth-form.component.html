@@ -1,0 +1,29 @@
+<mat-card>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <ng-content select="mat-card-title"></ng-content>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput formControlName="email">
+            <mat-error *ngIf="hasError('email','email')">The E-mail must be valid!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error *ngIf="hasError('password','required')">This field is required!</mat-error>
+        </mat-form-field>
+
+        <ng-content select=".error"></ng-content>
+        
+        <div>
+            <br>
+            <ng-content select="button"></ng-content>
+        </div>
+
+        <div>
+            <br>
+            <ng-content select="a"></ng-content>
+        </div>
+    </form>
+</mat-card>

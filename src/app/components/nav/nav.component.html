@@ -1,0 +1,11 @@
+<mat-toolbar class="header mat-elevation-z4">
+    <div class="center">
+        <img src='/assets/gym2.png' width="160" height="120"/>
+        <mat-card-title>Gym APP</mat-card-title>
+    </div>
+    <div *ngIf="user?.authenticated">
+        <button (click)="onLogout()" mat-fab color="primary">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>

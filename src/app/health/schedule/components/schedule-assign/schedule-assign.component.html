@@ -1,0 +1,32 @@
+<div class="background">
+    <mat-card>
+        <div class="container">
+            <div class="container">
+                <mat-icon [color]="prop.color">{{prop.icon}}</mat-icon>
+                <h2>
+                    Assign {{section.type}}
+                </h2>
+            </div>
+            <a
+            mat-raised-button
+            [routerLink]="getRoute(section.type)">
+                New {{section.type}}
+            </a>
+        </div>
+        <div class="content">
+            <div *ngFor="let item of list" class="item" (click)="onSelect(item.name)">
+                <mat-icon [ngClass]="{'non-active':!exists(item.name),'active':exists(item.name)}">turned_in</mat-icon>
+                {{item.name}}
+            </div>
+            <div *ngIf="!list.length">
+                <p>You don't have {{section.type}}</p>
+            </div>
+        </div>
+
+
+        <button mat-raised-button color="primary"
+        (click)="updateAssign()">Update</button>&nbsp;
+        <button mat-raised-button color="warn"
+        (click)="closeModal()">Cancel</button>
+    </mat-card>
+</div>

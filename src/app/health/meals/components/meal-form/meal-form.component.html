@@ -1,0 +1,61 @@
+
+<form [formGroup]="form" *ngIf="meal;else loading">
+    <div class="container">
+        <h3>Meal name</h3>
+        <mat-form-field appearance="outline" class="max-w">
+            <input type="text" matInput formControlName="name" placeholder="ex: my fitness meal">
+            <mat-error *ngIf="hasError('name','required')">This field is required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="menu container">
+        <h3>Food</h3>
+        <button mat-raised-button class="g-btn" (click)="addIngredient()">ADD FOOD</button>
+    </div>
+    <div formArrayName="ingredients">
+        <div *ngFor="let c of ingredients.controls; let i=index"> <!--ingredients.controls obtem os forms groups OU no caso os forms controls!-->
+            <div class="menu">
+                <mat-form-field class="max-w">
+                    <input matInput [formControlName]="i" placeholder="ex: eggs">
+                    <mat-error *ngIf="hasErrorIngredients(i,'required')">This field is required</mat-error>
+                </mat-form-field>
+                <button mat-mini-fab color="warn" (click)="removeIngredient(i)">X</button>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 30px;">
+        <button *ngIf="!checkMeal" 
+        mat-raised-button color="primary" 
+        type='button' 
+        (click)="createMeal()">Create Meal</button>
+
+        <button *ngIf="checkMeal"
+        mat-raised-button color="primary"
+        type="button"
+        (click)="updateMeal()">Save</button>
+
+        <button mat-raised-button color="accent">
+            <a [routerLink]="['../']"> <!--volta 1 (equivalente a retroceder 1 diretorio)-->
+                Cancel
+            </a>
+        </button>
+
+        <div style="float: right;" *ngIf="checkMeal">
+            <div *ngIf="toggle; else showBtn">
+                Delete Item?
+                <button mat-raised-button color="primary" type="button" (click)="onRemove()">Yes</button>
+                <button mat-button (click)="onToggle()">No</button>
+            </div>
+            <ng-template #showBtn>
+                <button (click)="onToggle()" type="button" mat-raised-button color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </ng-template>
+        </div>
+    </div>
+</form>
+<ng-template #loading>
+    <div class="loading">
+        <mat-icon>hourglass_empty</mat-icon>
+        Fething Meal...
+    </div>
+</ng-template>

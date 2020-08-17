@@ -1,0 +1,10 @@
+<div class="menu">
+    <button
+    mat-mini-fab
+    color="primary"
+    *ngFor="let day of days;index as i"
+    (click)="changeDay(i)"
+    [class.active]="selected==i">
+    {{day}}
+    </button>
+</div>

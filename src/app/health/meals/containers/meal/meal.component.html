@@ -1,0 +1,21 @@
+<mat-card>
+    <div class="menu">
+        <div class="left">
+            <mat-icon color="warn">favorite_border</mat-icon>
+            <mat-card-title *ngIf="meal$ | async as meal; else loading">
+                {{meal.name?'Edit':'Create'}} meal
+            </mat-card-title>
+            <ng-template #loading>
+                Loading...
+            </ng-template>
+        </div>
+        
+    </div>
+    <div>
+        <meal-form
+        (submitted)="addMeal($event)"
+        (update)="updateMeal($event)"
+        (remove)="removeMeal()"
+        [meal]="meal$ | async"></meal-form>
+    </div>
+</mat-card>

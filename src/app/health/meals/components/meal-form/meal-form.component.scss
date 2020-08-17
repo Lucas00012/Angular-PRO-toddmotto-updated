@@ -1,0 +1,25 @@
+.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container{
+    border-top: 1px solid gray;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.max-w{
+    width: 100% !important;
+}
+.loading{
+    display: flex;
+    align-items: center;
+}
+.g-btn{
+    background-color: greenyellow;
+    color: white;
+}
+a{
+    color:white
+}

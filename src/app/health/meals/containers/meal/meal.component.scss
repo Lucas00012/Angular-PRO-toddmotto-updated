@@ -1,0 +1,19 @@
+.menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.left{
+    display: flex;
+}
+.left>mat-card-title{
+    margin: 0 !important;
+}
+mat-icon{
+    padding-right: 30px;
+}
+mat-card{
+    margin-bottom: 80px;
+}

@@ -1,0 +1,30 @@
+<mat-card>
+    <div class="menu">
+        <div class="left">
+            <mat-icon color="primary">fitness_center</mat-icon>
+            <mat-card-title>Your workouts</mat-card-title>
+        </div>
+        <div>
+            <button mat-raised-button>
+                <a routerLink="/workouts/new">
+                    NEW WORKOUT
+                </a>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="workouts$ | async as workouts; else loading;">
+        <div *ngIf="!workouts.length">
+            No workouts added, add a workout to start
+        </div>
+        <list-item
+        *ngFor="let workout of workouts"
+        [element]="workout"
+        (remove)="removeWorkout($event)"></list-item>
+    </div>
+    <ng-template #loading>
+        <div class="loading">
+            <mat-icon>hourglass_empty</mat-icon>
+            Fething workouts...
+        </div>
+    </ng-template>
+</mat-card>

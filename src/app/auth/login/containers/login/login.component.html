@@ -1,0 +1,8 @@
+<div>
+    <auth-form (submitted)="login($event)">
+        <mat-card-title>Login</mat-card-title>
+        <button mat-raised-button type="submit" color="primary">Login</button>
+        <a routerLink="/auth/register">Not registered?</a>
+        <div class="error" *ngIf="error">{{error}}</div>
+    </auth-form>
+</div>

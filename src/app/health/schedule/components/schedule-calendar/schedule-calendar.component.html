@@ -1,0 +1,19 @@
+<div>
+    {{date | json}}
+    <schedule-controls
+    [date]="dateNow"
+    (change)="onChangeWeek($event)">
+    </schedule-controls>
+
+    <schedule-days
+    (select)="onChangeDay($event)"
+    [selected]="weekDay">
+    </schedule-days>
+
+    <schedule-section
+    *ngFor="let section of sections"
+    [name]="section.name"
+    [section]="getSection(section.key)"
+    (select)="selectSection($event,section.key)">
+    </schedule-section>
+</div>

@@ -1,0 +1,90 @@
+
+<form [formGroup]="form" *ngIf="workout;else loading">
+    <div class="container">
+        <h3>Workout name</h3>
+        <mat-form-field appearance="outline" class="max-w">
+            <input type="text" matInput formControlName="name" placeholder="it depends the type of workout">
+            <mat-error *ngIf="hasError('name','required')">This field is required</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="container">
+        <workout-type
+        formControlName="type"></workout-type>
+    </div>
+
+    <div class="container">
+        <div class="menu" formGroupName="strength" *ngIf="form.get('type').value=='strength'">
+            <div>
+                <h3>Seps</h3>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" formControlName="reps">
+                </mat-form-field>
+            </div>
+            <div>
+                <h3>Sets</h3>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" formControlName="sets">
+                </mat-form-field>
+            </div>
+            <div>
+                <h3>Weigth (kg)</h3>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" formControlName="weigth">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="menu" formGroupName="endurance" *ngIf="form.get('type').value=='endurance'">
+            <div>
+                <h3>Distance (km)</h3>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" formControlName="distance">
+                </mat-form-field>
+            </div>
+            <div>
+                <h3>Duration (minutes)</h3>
+                <mat-form-field appearance="outline">
+                    <input matInput type="number" formControlName="duration">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <button *ngIf="!checkWorkout" 
+        mat-raised-button color="primary" 
+        type='button' 
+        (click)="createWorkout()">Create Workout</button>
+
+        <button *ngIf="checkWorkout"
+        mat-raised-button color="primary"
+        type="button"
+        (click)="updateWorkout()">Save</button>
+
+        <button mat-raised-button color="accent">
+            <a [routerLink]="['../']"> <!--volta 1 (equivalente a retroceder 1 diretorio)-->
+                Cancel
+            </a>
+        </button>
+
+        <div style="float: right;" *ngIf="checkWorkout">
+            <div *ngIf="toggle; else showBtn">
+                Delete Item?
+                <button mat-raised-button color="primary" type="button" (click)="onRemove()">Yes</button>
+                <button mat-button (click)="onToggle()">No</button>
+            </div>
+            <ng-template #showBtn>
+                <button (click)="onToggle()" type="button" mat-raised-button color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </ng-template>
+        </div>
+    </div>
+</form>
+<ng-template #loading>
+    <div class="loading">
+        <mat-icon>hourglass_empty</mat-icon>
+        Fething Workout...
+    </div>
+</ng-template>

@@ -1,0 +1,20 @@
+.header{
+    height: 100px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+div{
+    display: flex;
+    align-items: center;
+}
+img{
+    margin-left: 60px;
+}
+button{
+    color:blueviolet;
+}
+mat-card-title{
+    color: #0000b3;
+    margin-left: 10px;
+}

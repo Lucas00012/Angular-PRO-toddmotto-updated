@@ -1,0 +1,16 @@
+.menu{
+    margin-top: 20px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+    margin-bottom: 20px;
+}
+button{
+    background-color: gray;
+}
+
+.active{
+    background-color: black;
+}
