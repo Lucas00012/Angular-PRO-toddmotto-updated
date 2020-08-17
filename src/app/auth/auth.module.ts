@@ -28,15 +28,9 @@ const ROUTES:Routes=[
 ]
 
 const firebaseConfig:FirebaseAppConfig = {
-    
-    apiKey: "AIzaSyB9XRg-FSKBqEr0ip_auSJbqLcpSKyk__4",
-    authDomain: "fitness-app-6e31d.firebaseapp.com",
-    databaseURL: "https://fitness-app-6e31d.firebaseio.com",
-    projectId: "fitness-app-6e31d",
-    storageBucket: "fitness-app-6e31d.appspot.com",
-    messagingSenderId: "522827311905",
-    appId: "1:522827311905:web:034b5d37437198d4e8ec60",
-    measurementId: "G-1J51SCSFG4"
+    /*
+    INSERT HERE YOUR CONFIGURATION
+    */
 };
 
 @NgModule({
