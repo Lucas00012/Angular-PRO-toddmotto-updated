@@ -1,6 +1,14 @@
-# App
+# Angular PRO Course (Todd Motto)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+* Any questions or doubts you can open an issue in this repository
+
+## Running project
+
+- Open the console and run `npm i` command to install the dependencies
+
+- Insert your firebase configuration in Auth Module located in `src/app/auth/auth.module.ts`
+
+- Copy the rules in the file `database.rules.json` and paste in your firebase database rules
 
 ## Development server
 
